@@ -6,24 +6,26 @@
 
 <hr>
 
+<div class="row">
 <% @products.each do |product| %>
-  <div class="row">
-    <div class="col s12 m6">
-      <div class="card hoverable grey darken-2">
-        <div class="card-content white-text">
-          <span class="card-title"><%= link_to product.name, product_path(product) %></span>
-          <p><%= product.description %></p>
-        </div>
-        <% if current_user.try(:admin) %>
+  <div class="col s12 m6 l4">
+    <div class="card hoverable">
+      <div class="card-image">
+        <%= image_tag product.picture.url(:full) %>
+        <span class="card-title"><%= link_to product.name, product_path(product) %></span>
+      </div>
+      <div class="card-content scroll">
+        <p><%= product.description %></p>
+      </div>
+      <% if current_user.try(:admin) %>
         <div class="card-action">
-          <%= link_to 'Edit Product', edit_product_path(product) %>
-          <%= link_to "Delete", product_path(product),
+            <%= link_to 'Edit Product', edit_product_path(product) %>
+            <%= link_to "Delete", product_path(product),
                                   :data => {:confirm => "Are you sure?",
                                   :method => "delete"} %>
-
-        <% end %>
-       </div>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
+</div>

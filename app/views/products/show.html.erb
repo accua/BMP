@@ -1,1 +1,12 @@
 <h1 class="center-align"><%= @product.name %></h1>
+
+<%= image_tag @product.picture.url(:full), class: 'center-pic' %>
+<br>
+
+<h3 class="center-align">Product Description</h3>
+<h5 class="center-align">
+  <%= @product.description %>
+</h5>
+
+
+<h3 class="center-align">Discussion</h3>

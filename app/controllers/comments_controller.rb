@@ -1,13 +1,13 @@
 class CommentController < ApplicationController
 
   def new
-    @product = Product.find(params[:picture_id])
+    @product = Product.find(params[:product_id])
     @comment = Comment.new
     @users = User.all
   end
 
   def create
-    @product = Product.find(params[:picture_id])
+    @product = Product.find(params[:product_id])
     @comment = @product.comments.new(comment_params)
     if @product.save
       redirect_to product_path(@product)

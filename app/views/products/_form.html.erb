@@ -1,21 +1,20 @@
 <%= form_for @product do |f| %>
   <div class="input-field">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </div>
-  </div>
-  <div class="input-field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="input-field">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, class: 'materialize-textarea' %>
   </div>
   <div class="input-field">
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
+  <%= f.label :picture %>
+  <div class="input field col s12">
+    <%= f.file_field :picture %>
+  </div>
   <br>
-  <%= f.submit 'Create Product', class: 'btn' %>
+  <%= f.submit %>
 <% end %>
