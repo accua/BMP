@@ -1,5 +1,5 @@
-class Comments < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :users
-  belongs_to :comments
+  belongs_to :products
   validates :content, presence: :true
 end

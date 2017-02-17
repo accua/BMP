@@ -1,12 +1,13 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
 
   def new
+    @user = current_user
     @product = Product.find(params[:product_id])
-    @comment = Comment.new
-    @users = User.all
+    @comment = @product.comments.new
   end
 
   def create
+    @user = current_user
     @product = Product.find(params[:product_id])
     @comment = @product.comments.new(comment_params)
     if @product.save
@@ -41,6 +42,7 @@ class CommentController < ApplicationController
       redirect_to product_path(@product)
     else
       render :edit
+    end
   end
 
   def destroy

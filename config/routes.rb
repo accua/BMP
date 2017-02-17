@@ -4,6 +4,7 @@ Rails.application.routes.draw do
        sessions: 'users/sessions'
      }
   resources :users, only: [:show]
-  resources :products
-    resources :comments
+  resources :products do
+    resources :comments, except: [:index]
+  end
 end
