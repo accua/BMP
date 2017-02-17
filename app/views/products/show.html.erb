@@ -9,5 +9,24 @@
 </h5>
 
 
-<h3 class="center-align">Discussion</h3>
 <%= link_to 'Add Comment', new_product_comment_path(@product) %>
+
+<h3 class="center-align">Discussion</h3>
+
+<% @product.comments.each do |comment| %>
+<div class="col l12">
+  <div class="card horizontal">
+    <div class="card-image">
+      <%= image_tag current_user.avatar.url(:thumb) %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <span><strong><%= comment.user.username %></strong> - <%= comment.content %></span>
+      </div>
+      <div class="card-action">
+        <%= link_to 'Go to Profile', user_path(comment.user) %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
