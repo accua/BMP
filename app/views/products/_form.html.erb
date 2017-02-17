@@ -1,0 +1,16 @@
+<%= form_for @product do |f| %>
+  <div class="input-field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="input-field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="input-field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <br>
+  <%= f.submit 'Create Product', class: 'btn' %>
+<% end %>

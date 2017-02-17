@@ -4,8 +4,16 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+
+    <%= f.email_field :email, autofocus: true, placeholder: 'Enter your email' %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :username, placeholder: 'Enter your username'  %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :fullname, placeholder: 'Enter your full name'  %>
   </div>
 
   <div class="field">
@@ -21,8 +29,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :admin %><br />
+    <p>Set to 'true' if admin account</p>
+    <%= f.text_field :admin, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: 'btn' %>
   </div>
 <% end %>
 
