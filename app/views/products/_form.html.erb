@@ -1,5 +1,10 @@
 <%= form_for @product do |f| %>
   <div class="input-field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </div>
+  </div>
+  <div class="input-field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>

@@ -17,3 +17,9 @@
  $primary-color: color("grey", "darken-2") !default;
  $secondary-color: color("orange", "base") !default;
  @import 'materialize';
+
+ .center-pic {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
