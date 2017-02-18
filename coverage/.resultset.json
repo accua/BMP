@@ -1,13 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/models/comment_spec.rb": [
+      "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/features/new_user_path_spec.rb": [
         1,
         null,
         1,
-        2,
-        2,
-        2,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/rails_helper.rb": [
@@ -591,8 +603,8 @@
         1,
         null,
         1,
-        0,
-        0,
+        2,
+        2,
         null,
         null
       ],
@@ -676,7 +688,7 @@
         1,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -984,9 +996,28 @@
         null,
         null
       ],
+      "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/factories/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/support/factory_girl.rb": [
         1,
         1,
+        null
+      ],
+      "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/models/comment_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
         null
       ],
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/models/product_spec.rb": [
@@ -1001,6 +1032,6 @@
         null
       ]
     },
-    "timestamp": 1487375120
+    "timestamp": 1487376807
   }
 }
