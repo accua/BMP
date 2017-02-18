@@ -1,24 +1,39 @@
-# README
+# Gummi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_This application was created to showcase authorization, authentication, and file hosting learned during rails week 2_
 
-Things you may want to cover:
+_**Andrew Accuardi**_
 
-* Ruby version
+## Description
 
-* System dependencies
+* _As a user, I'd like to click on a product and see it's details._
+* _As a user, I'd like to submit a comment on a product._
+* _As a user, I'd like to edit, and delete my own comments_
+* _As an admin, I'd like to create, update, delete new products._
+* _As an admin, I'd like to create, update, delete all comments._
 
-* Configuration
 
-* Database creation
+## Installation
 
-* Database initialization
+* `git clone https://github.com/accua/bmp`
+* `rails db:create`
+* `rails db:migrate`
+* `bundle`
+* `rails s` to serve
 
-* How to run the test suite
+## Running / Development
 
-* Services (job queues, cache servers, search engines, etc.)
+* navigate to `localhost:3000` in your web browser to see the project!
 
-* Deployment instructions
+## Known Bugs
+* The navbar has a media query that gets rid of all navigation at tablet and smaller size windows.
 
-* ...
+## Technologies Used
+
+_This webpage was made using HTML5, Ruby on Rails, MaterializeCSS, CSS3_
+
+### License
+
+Copyright (c) 2017 _Andrew Accuardi_
+
+*Licensed under the GPL License*

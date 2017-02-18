@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
 
+  def landing
+  end
+
   def index
     @products = Product.all
   end

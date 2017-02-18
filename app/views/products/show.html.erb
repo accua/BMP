@@ -17,14 +17,19 @@
 <div class="col l12">
   <div class="card horizontal">
     <div class="card-image">
-      <%= image_tag current_user.avatar.url(:thumb) %>
+      <%= image_tag comment.user.avatar.url(:thumb) %>
     </div>
     <div class="card-stacked">
       <div class="card-content">
         <span><strong><%= comment.user.username %></strong> - <%= comment.content %></span>
       </div>
+      <% if current_user.try(:admin) || current_user.id == comment.user_id %>
       <div class="card-action">
-        <%= link_to 'Go to Profile', user_path(comment.user) %>
+        <%= link_to 'Edit Comment', edit_product_comment_path(@product, comment) %>
+        <%= link_to "Delete", product_comment_path(@product, comment),
+                              :data => {:confirm => "Are you sure?",
+                              :method => "delete"} %>
+      <% end %>
       </div>
     </div>
   </div>

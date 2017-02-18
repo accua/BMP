@@ -23,3 +23,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.background-image {
+  width: 100%;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+}

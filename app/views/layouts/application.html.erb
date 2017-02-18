@@ -17,6 +17,7 @@
            <span class="black-text"><li>You are an admin</li></span>
          <% end %>
          <li><a href="/">Home</a></li>
+         <li><%= link_to 'Browse Products', products_path %></li>
          <% if current_user %>
          <li><%= link_to current_user.username, user_path(current_user.id) %></li>
          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
