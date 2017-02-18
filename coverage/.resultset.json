@@ -688,11 +688,11 @@
         1,
         null,
         1,
-        1,
+        2,
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -992,7 +992,9 @@
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/factories/products.rb": [
         1,
         1,
-        null,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -1009,6 +1011,22 @@
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/support/factory_girl.rb": [
         1,
         1,
+        null
+      ],
+      "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/features/product_detail_page_path_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/andrewaccuardi/Desktop/Code/epicodus/Ruby/show/BMP/spec/models/comment_spec.rb": [
@@ -1032,6 +1050,6 @@
         null
       ]
     },
-    "timestamp": 1487376807
+    "timestamp": 1487377114
   }
 }
