@@ -2,7 +2,9 @@
 
 <%= form_for [@product, @comment] do |f| %>
   <%= f.text_field :content, placeholder: "Enter Comment"%>
-  <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+  <% if @comment.user_id == nil %>
+    <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+  <% end %>
   <br>
   <%= f.submit %>
 <% end %>
