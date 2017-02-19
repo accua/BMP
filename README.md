@@ -1,4 +1,4 @@
-# Gummi
+# BuildMyBackpack
 
 _This application was created to showcase authorization, authentication, and file hosting learned during rails week 2_
 
