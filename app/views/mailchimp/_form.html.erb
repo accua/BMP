@@ -1,0 +1,17 @@
+<%= form_tag('mailchimp#create') do %>
+  <div class="input-field col s6">
+    <%= label_tag :first_name %>
+    <%= text_field_tag :first_name %>
+  </div>
+  <div class="input-field col s6">
+    <%= label_tag :last_name %>
+    <%= text_field_tag :last_name %>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+    </div>
+    <%= submit_tag "Subscribe" %>
+  </div>
+<% end %>
