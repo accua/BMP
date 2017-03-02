@@ -4,6 +4,7 @@ Rails.application.routes.draw do
        sessions: 'users/sessions'
      }
   resources :users, only: [:show]
+  resources :mailchimp, only: [:create]
   resources :products do
     resources :comments, except: [:index]
   end
