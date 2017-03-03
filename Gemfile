@@ -48,6 +48,8 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
+  gem 'rest-client'
+  gem 'vcr'
 end
 
 group :development do

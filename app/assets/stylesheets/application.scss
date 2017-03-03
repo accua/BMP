@@ -24,9 +24,37 @@
   margin-right: auto;
 }
 
-.background-image {
+body, html {
+  height: 100%;
+}
+
+.background {
+  background: url("yosemite2.jpg") no-repeat center ;
+  background-size: cover;
   width: 100%;
- -webkit-background-size: cover;
- -moz-background-size: cover;
- background-size: cover;
+  height: 100%;
+  filter: brightness(70%);
+  z-index: -1;
+}
+
+.landing-page {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  top: -64px;
+  h1 {
+  margin-top: 0;
+  }
+  .content {
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+  }
+}
+
+nav {
+  z-index: 2;
+  position: relative;
 }
