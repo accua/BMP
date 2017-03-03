@@ -24,9 +24,9 @@
          <% else %>
          <li><%= link_to 'Login', new_user_session_path %></li>
          <% end %>
-       </ul>
-     </div>
-   </nav>
+        </ul>
+      </div>
+    </nav>
       <% if flash[:notice]%>
         <%= flash[:notice] %>
       <% end %>
@@ -40,5 +40,29 @@
           <%= yield %>
         </div>
       <% end %>
+    <footer class="page-footer">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="white-text">Subscribe to our newsletter</h5>
+          <%= render 'mailchimp/form' %>
+        </div>
+        <div class="col l4">
+          <p class="white-text">This is another column</p>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Mission</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © Andrew Accuardi 2017
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </footer>
   </body>
 </html>

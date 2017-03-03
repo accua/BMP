@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'paperclip'
 gem 'materialize-sass'
+gem 'rest-client'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -50,6 +51,8 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'rest-client'
   gem 'vcr'
+  gem 'dotenv-rails'
+  gem 'webmock'
 end
 
 group :development do

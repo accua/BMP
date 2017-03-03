@@ -13,10 +13,27 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize/components/color";
- $primary-color: color("grey", "darken-2") !default;
- $secondary-color: color("orange", "base") !default;
- @import 'materialize';
+@import "materialize/components/color";
+$primary-color: color("grey", "darken-2") !default;
+$secondary-color: color("orange", "base") !default;
+@import 'materialize';
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 247.3px;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
 
 .center-pic {
   display: block;
