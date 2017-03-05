@@ -8,17 +8,21 @@ class Mailchimp
   end
 
   def new_sub
-    RestClient.post("https://test:#{ENV['MC_KEY']}@us15.api.mailchimp.com/3.0/lists/#{ENV['MC_LIST']}/members",
-          {
-            'email_address' =>
-            @email,
-            'merge_fields' => {
-                                'FNAME' => @first_name,
-                                'LNAME' => @last_name
-                              },
-            'status' => "subscribed"
-            }.to_json,
-            { :content_type => "application/json",
-              accept: :json})
+    begin
+      RestClient.post("https://test:#{ENV['MC_KEY']}@us15.api.mailchimp.com/3.0/lists/#{ENV['MC_LIST']}/members",
+            {
+              'email_address' =>
+              @email,
+              'merge_fields' => {
+                                  'FNAME' => @first_name,
+                                  'LNAME' => @last_name
+                                },
+              'status' => "subscribed"
+              }.to_json,
+              { :content_type => "application/json",
+                accept: :json})
+      rescue RestClient::BadRequest => error
+        JSON.parse(error.response)['detail']
+    end
   end
 end
