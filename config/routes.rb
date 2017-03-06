@@ -5,10 +5,16 @@ Rails.application.routes.draw do
      }
   resources :users, only: [:show]
   resources :mailchimp, only: [:create]
+
   resources :products do
     resources :comments, except: [:index]
   end
-  resources :builds do
+
+  resources :builds, only: [''] do
     resources :comments, except: [:index]
+  end
+
+  resources :users do
+    resources :builds
   end
 end
