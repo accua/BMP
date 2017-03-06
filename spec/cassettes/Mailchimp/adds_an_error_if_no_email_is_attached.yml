@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us15.api.mailchimp.com/3.0/lists/<mailchimp list id>/members
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"","merge_fields":{"FNAME":"john","LNAME":"doe"},"status":"subscribed"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.1 (darwin16.4.0 x86_64) ruby/2.3.1p112
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '88'
+      Host:
+      - us15.api.mailchimp.com
+      Authorization:
+      - Basic dGVzdDpmYjg5NGEwZTViNThiYTU2NzIzNDk5YjE3YjQ3M2ViMQ==
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - openresty
+      Content-Type:
+      - application/problem+json; charset=utf-8
+      Content-Length:
+      - '151'
+      X-Request-Id:
+      - 8532a69d-bfd4-4884-bdea-343cde58ae70
+      Link:
+      - <https://us15.api.mailchimp.com/schema/3.0/ProblemDetailDocument.json>; rel="describedBy"
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 03 Mar 2017 01:24:06 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAz3MMQ7DIAxA0atEntM4Q6eM3br2BgisBBUwsk2kqOrdC0vn
+        //U+YFcl2OAwqxtioJMSV5Ilu5j8EXNdPGcM7FumYs4iF/w33FsMpEgiLLc9
+        saqTC2EGi5aG+yynSzFML1Ju4qkn7UpT2O7rOkMg61gfH8mV90SDnlwIQqr9
+        jaXfxQ8Jvj+DEt+mrQAAAA==
+    http_version: 
+  recorded_at: Fri, 03 Mar 2017 01:24:06 GMT
+recorded_with: VCR 3.0.3

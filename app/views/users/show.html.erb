@@ -1,3 +1,4 @@
-<h1 class="center-align"><%= current_user.username %></h1>
-
-<%= image_tag current_user.avatar.url(:medium), class: 'center-pic' %>
+<div class="profile-page">
+  <h1 class="center-align"><%= current_user.username %></h1>
+  <%= image_tag current_user.avatar.url(:medium), class: 'center-pic' %>
+</div>

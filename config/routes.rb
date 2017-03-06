@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments, except: [:index]
   end
+  resources :builds do
+    resources :comments, except: [:index]
+  end
 end
