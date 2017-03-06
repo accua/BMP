@@ -17,7 +17,7 @@
            <span class="black-text"><li>You are an admin</li></span>
          <% end %>
          <li><a href="/">Home</a></li>
-         <li><%= link_to 'Browse Products', products_path %></li>
+         <li><%= link_to 'Browse Builds', builds_path %></li>
          <% if current_user %>
          <li><%= link_to current_user.username, user_path(current_user.id) %></li>
          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -52,7 +52,7 @@
         <div class="col l4 s12">
           <h5 class="white-text">Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="/">Home</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Blog</a></li>
             <li><a class="grey-text text-lighten-3" href="#!">Mission</a></li>
           </ul>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :comments, except: [:index]
   end
 
-  resources :builds, only: [''] do
+  resources :builds, only: [:index] do
     resources :comments, except: [:index]
   end
 

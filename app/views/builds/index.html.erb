@@ -1,0 +1,34 @@
+<div class="full-height">
+
+  <h1 class="center-align">Browse Builds</h1>
+
+  <% if current_user.try(:admin) %>
+    <%= link_to 'Create New Build', new_user_build_path(current_user.id), class: 'btn' %>
+  <% end %>
+
+  <hr>
+
+  <div class="row">
+  <% @builds.each do |build| %>
+    <div class="col s12 m6 l4">
+      <div class="card hoverable">
+        <div class="card-image">
+          <%= image_tag build.picture.url(:full) %>
+          <span class="card-title"><%= link_to build.name, user_build_path(build.user_id, build) %></span>
+        </div>
+        <div class="card-content scroll">
+          <p><%= build.description %></p>
+        </div>
+        <% if current_user.try(:admin) %>
+          <div class="card-action">
+              <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build) %>
+              <%= link_to "Delete", user_build_path(build.user_id, build),
+                                    :data => {:confirm => "Are you sure?",
+                                    :method => "delete"} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

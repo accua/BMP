@@ -1,7 +1,7 @@
 class BuildsController < ApplicationController
 
   def index
-    @build = Build.all
+    @builds = Build.all
   end
 
   def show
@@ -49,7 +49,7 @@ class BuildsController < ApplicationController
 private
 
   def build_params
-    params.require(:build).permit(:name, :description, :price, :user_id)
+    params.require(:build).permit(:name, :description, :price, :user_id, :picture)
   end
 
 end

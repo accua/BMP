@@ -5,5 +5,6 @@ class Product < ApplicationRecord
 
   has_many :comments
   has_many :users, through: :comments
+  belongs_to :build
   validates :name, :description, :price, presence: :true
 end
