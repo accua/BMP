@@ -1,10 +1,23 @@
 <%= render 'layouts/errors', object: @comment %>
 
-<%= form_for [@product, @comment] do |f| %>
-  <%= f.text_field :content, placeholder: "Enter Comment"%>
-  <% if @comment.user_id == nil %>
-    <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+<% if @product %>
+  <%= form_for [@product, @comment] do |f| %>
+    <%= f.text_field :content, placeholder: "Enter Comment"%>
+    <% if @comment.user_id == nil %>
+      <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+      <%= f.hidden_field :commentable, value: @product %>
+    <% end %>
+    <br>
+    <%= f.submit %>
   <% end %>
-  <br>
-  <%= f.submit %>
+<% else %>
+  <%= form_for [@build, @comment] do |f| %>
+    <%= f.text_field :content, placeholder: "Enter Comment"%>
+    <% if @comment.user_id == nil %>
+      <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+      <%= f.hidden_field :commentable, value: @build %>
+    <% end %>
+    <br>
+    <%= f.submit %>
+  <% end %>
 <% end %>

@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :products, through: :comments
-  has_many :builds
+  has_and_belongs_to_many :builds
 end

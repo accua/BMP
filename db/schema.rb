@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306190826) do
+ActiveRecord::Schema.define(version: 20170306224637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,24 @@ ActiveRecord::Schema.define(version: 20170306190826) do
     t.text     "description"
   end
 
+  create_table "builds_products", id: false, force: :cascade do |t|
+    t.integer "build_id",   null: false
+    t.integer "product_id", null: false
+  end
+
+  create_table "builds_users", id: false, force: :cascade do |t|
+    t.integer "build_id", null: false
+    t.integer "user_id",  null: false
+  end
+
   create_table "comments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "content"
     t.integer  "user_id"
-    t.integer  "product_id"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -46,7 +58,6 @@ ActiveRecord::Schema.define(version: 20170306190826) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.integer  "build_id"
   end
 
   create_table "users", force: :cascade do |t|

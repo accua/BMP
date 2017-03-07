@@ -1,31 +1,33 @@
-<h1 class="center-align">Featured Products</h1>
+<div class="full-height">
+  <h1 class="center-align">Featured Products</h1>
 
-<% if current_user.try(:admin) %>
-  <%= link_to 'Create New Product', new_product_path, class: 'btn' %>
-<% end %>
+  <% if current_user.try(:admin) %>
+    <%= link_to 'Create New Product', new_product_path, class: 'btn' %>
+  <% end %>
 
-<hr>
+  <hr>
 
-<div class="row">
-<% @products.each do |product| %>
-  <div class="col s12 m6 l4">
-    <div class="card hoverable">
-      <div class="card-image">
-        <%= image_tag product.picture.url(:full) %>
-        <span class="card-title"><%= link_to product.name, product_path(product) %></span>
-      </div>
-      <div class="card-content scroll">
-        <p><%= product.description %></p>
-      </div>
-      <% if current_user.try(:admin) %>
-        <div class="card-action">
-            <%= link_to 'Edit Product', edit_product_path(product) %>
-            <%= link_to "Delete", product_path(product),
-                                  :data => {:confirm => "Are you sure?",
-                                  :method => "delete"} %>
+  <div class="row">
+  <% @products.each do |product| %>
+    <div class="col s12 m6 l4">
+      <div class="card hoverable">
+        <div class="card-image">
+          <%= image_tag product.picture.url(:full) %>
+          <span class="card-title"><%= link_to product.name, product_path(product) %></span>
         </div>
-      <% end %>
+        <div class="card-content scroll">
+          <p><%= product.description %></p>
+        </div>
+        <% if current_user.try(:admin) %>
+          <div class="card-action">
+              <%= link_to 'Edit Product', edit_product_path(product) %>
+              <%= link_to "Delete", product_path(product),
+                                    :data => {:confirm => "Are you sure?",
+                                    :method => "delete"} %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  <% end %>
   </div>
-<% end %>
 </div>

@@ -14,18 +14,25 @@
       <div class="card hoverable">
         <div class="card-image">
           <%= image_tag build.picture.url(:full) %>
-          <span class="card-title"><%= link_to build.name, user_build_path(build.user_id, build) %></span>
+          <span class="card-title"><%= link_to build.name, user_build_path(build.user_id, build.id) %></span>
         </div>
         <div class="card-content scroll">
           <p><%= build.description %></p>
         </div>
         <% if current_user.try(:admin) %>
           <div class="card-action">
-              <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build) %>
+              <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
               <%= link_to "Delete", user_build_path(build.user_id, build),
                                     :data => {:confirm => "Are you sure?",
                                     :method => "delete"} %>
           </div>
+        <% elsif current_user.id == build.user_id %>
+        <div class="card-action">
+            <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
+            <%= link_to "Delete", user_build_path(build.user_id, build),
+                                  :data => {:confirm => "Are you sure?",
+                                  :method => "delete"} %>
+        </div>
         <% end %>
       </div>
     </div>

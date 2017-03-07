@@ -2,19 +2,35 @@ class CommentsController < ApplicationController
 
   def new
     @user = current_user
+    if params[:product_id]
     @product = Product.find(params[:product_id])
-    @comment = @product.comments.new
+      @comment = @product.comments.new
+    else
+      @build = Build.find(params[:build_id])
+      @comment = @build.comments.new
+    end
   end
 
   def create
     @user = current_user
+    if params[:product_id]
     @product = Product.find(params[:product_id])
-    @comment = @product.comments.new(comment_params)
-    if @product.save
-      redirect_to product_path(@product)
+      @comment = @product.comments.create(comment_params)
+      if @comment.save
+        redirect_to product_path(@product)
+      else
+        flash[:alert] = "Comment was not added, Please try again"
+        render :new
+      end
     else
-      flash[:alert] = "Comment was not added, Please try again"
-      render :new
+      @build = Build.find(params[:build_id])
+      @comment = @build.comments.create(comment_params)
+      if @comment.save
+        redirect_to user_build_path(@build.user_id, @build)
+      else
+        flash[:alert] = "Comment was not added, Please try again"
+        render :new
+      end
     end
   end
 
@@ -53,6 +69,6 @@ class CommentsController < ApplicationController
 
 private
   def comment_params
-    params.require(:comment).permit(:content, :user_id)
+    params.require(:comment).permit(:content, :user_id, :commentable_type, :commentable_id)
   end
 end
