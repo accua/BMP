@@ -1,6 +1,10 @@
-<div class="show-height">
+<div class="full-height">
   <h1 class="center-align"><%= @build.name %></h1>
   <%= image_tag @build.picture.url(:medium), class: 'center-pic' %>
+
+  <% @build.products.each do |product| %>
+    <p><%= product.name %></p>
+  <% end %>
 
   <%= link_to 'Add Comment', new_build_comment_path(@build) %>
 

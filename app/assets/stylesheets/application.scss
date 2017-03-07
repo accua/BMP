@@ -15,7 +15,7 @@
  */
 @import "materialize/components/color";
 $primary-color: color("grey", "darken-2") !default;
-$secondary-color: color("orange", "base") !default;
+$secondary-color: color("#ffa500", "base") !default;
 @import 'materialize';
 
 html {
@@ -83,4 +83,17 @@ nav {
 
 .comment-margin {
   margin-bottom: 100px;
+}
+
+.hero {
+  text-shadow: 2px 2px 1px #000
+}
+
+a {
+  color: #ffa500
+}
+
+.card-content {
+  max-height: 150px;
+  overflow: scroll;
 }

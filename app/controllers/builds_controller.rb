@@ -11,13 +11,14 @@ class BuildsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @build = @user.builds.new
+    @products = Product.all
   end
 
   def create
     @user = User.find(params[:user_id])
     @build = @user.builds.new(build_params)
     if @user.save
-      redirect_to user_builds_path(@build)
+      redirect_to edit_user_build_path(@user.id, @build)
     else
       flash[:alert] = 'Build could not be created, please try again.'
       render :new
@@ -27,15 +28,21 @@ class BuildsController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @build = Build.find(params[:id])
+    @products = Product.all
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @build = Build.find(params[:id])
-    if @build.update(build_params)
-      redirect_to user_build_path(@user, @build)
+    if params['build']['product_ids']
+      @user = User.find(params[:user_id])
+      @build = Build.find(params[:id])
+      @product = Product.find(params['build']['product_ids'].to_i)
+      @build.products.push(@product)
     else
-      render :edit
+      if @build.update(build_params)
+        redirect_to user_build_path(@user, @build)
+      else
+        render :edit
+      end
     end
   end
 
@@ -49,7 +56,7 @@ class BuildsController < ApplicationController
 private
 
   def build_params
-    params.require(:build).permit(:name, :description, :price, :user_id, :picture)
+    params.require(:build).permit(:name, :description, :price, :user_id, :picture, :product_ids)
   end
 
 end

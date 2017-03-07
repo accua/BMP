@@ -1,0 +1,20 @@
+<div class="full-height">
+  <h1> <%= @build.name %> by <%= link_to @build.user.username, user_path(@build.user) %> </h1>
+  <table>
+    <tr>
+      <th>Gear</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= image_tag product.picture.url(:thumb) %> <%= product.name %></td>
+      <td>$<%= product.price %></td>
+      <td><%= form_for [@user, @build] do |f| %>
+        <%= f.text_field :product_ids, value: product.id %>
+        <%= f.submit "Add" %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>

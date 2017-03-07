@@ -3,6 +3,8 @@ class Build < ApplicationRecord
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   has_and_belongs_to_many :products
-  has_and_belongs_to_many :users
+  belongs_to :user
   has_many :comments, :as => :commentable
+  has_many :favorites, :as => :favoritable
+  
 end

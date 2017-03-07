@@ -9,12 +9,8 @@
     <%= f.label :description %>
     <%= f.text_area :description, class: 'materialize-textarea' %>
   </div>
-  <div class="input-field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-  <%= f.label :picture %>
-  <div class="input field col s12">
+    <%= f.label :picture %>
+    <div class="col s12">
     <%= f.file_field :picture %>
     <%= f.hidden_field :user_id, value: @user.id %>
   </div>

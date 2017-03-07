@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306224637) do
+ActiveRecord::Schema.define(version: 20170307204049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,6 @@ ActiveRecord::Schema.define(version: 20170306224637) do
     t.integer "product_id", null: false
   end
 
-  create_table "builds_users", id: false, force: :cascade do |t|
-    t.integer "build_id", null: false
-    t.integer "user_id",  null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -46,6 +41,15 @@ ActiveRecord::Schema.define(version: 20170306224637) do
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "favoritable_type"
+    t.integer  "favoritable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|

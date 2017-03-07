@@ -17,7 +17,7 @@
           <span class="card-title"><%= link_to build.name, user_build_path(build.user_id, build.id) %></span>
         </div>
         <div class="card-content scroll">
-          <p><%= build.description %></p>
+          <p class="card-text-height"><%= build.description %></p>
         </div>
         <% if current_user.try(:admin) %>
           <div class="card-action">
