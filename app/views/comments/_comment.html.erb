@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="card horizontal comment_<%= comment.id %>">
+    <div class="card-image">
+      <%= image_tag comment.user.avatar.url(:thumb) %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <span><strong><%= link_to comment.user.username, user_path(comment.user) %></strong> - <%= comment.content %></span><br>
+        <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+      </div>
+      <% if current_user != nil %>
+        <% if current_user.try(:admin) || current_user.id == comment.user_id %>
+      <div class="card-action">
+        <%= link_to new_comment_comment_path(comment), class: "reply_#{comment.id}", remote: true do %>Reply<% end %>
+        <% if @build %>
+          <%= link_to 'Edit Comment', edit_build_comment_path(@build, comment) %>
+          <%= link_to "Delete", build_comment_path(@build, comment),
+            :data => {:confirm => "Are you sure?",
+            :method => "delete"} %>
+        <% elsif @comment %>
+          <%= link_to 'Edit Comment', edit_comment_comment_path(@comment, comment) %>
+          <%= link_to "Delete", comment_comment_path(@comment, comment),
+            :data => {:confirm => "Are you sure?",
+            :method => "delete"} %>
+        <% else %>
+          <%= link_to 'Edit Comment', edit_product_comment_path(@product, comment) %>
+          <%= link_to "Delete", product_comment_path(@product, comment),
+            :data => {:confirm => "Are you sure?",
+            :method => "delete"} %>
+        <% end %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

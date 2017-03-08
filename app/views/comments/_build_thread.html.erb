@@ -1,0 +1,5 @@
+  <%= form_for [comment, Comment.new], remote: true do |f| %>
+    <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Reply", class: 'btn' %>
+  <% end %>

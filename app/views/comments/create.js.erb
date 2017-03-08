@@ -1,0 +1,2 @@
+$("#new_comment_form_<%= @comment.id %>").hide()
+$("#new_comment_<%= @comment.id %>").append('<%= j render "comment", comment: @new_comment %>')

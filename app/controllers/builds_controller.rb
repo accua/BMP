@@ -38,6 +38,8 @@ class BuildsController < ApplicationController
       @product = Product.find(params['build']['product_ids'].to_i)
       @build.products.push(@product)
     else
+      @user = User.find(params[:user_id])
+      @build = Build.find(params[:id])
       if @build.update(build_params)
         redirect_to user_build_path(@user, @build)
       else

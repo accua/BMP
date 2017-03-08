@@ -1,37 +1,30 @@
 class CommentsController < ApplicationController
+before_action :find_commentable
 
   def new
     @user = current_user
-    if params[:product_id]
-    @product = Product.find(params[:product_id])
-      @comment = @product.comments.new
-    else
-      @build = Build.find(params[:build_id])
-      @comment = @build.comments.new
+    @comment = Comment.find(params[:comment_id])
+    @new_comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
   def create
     @user = current_user
-    if params[:product_id]
-    @product = Product.find(params[:product_id])
-      @comment = @product.comments.create(comment_params)
-      if @comment.save
-        redirect_to product_path(@product)
+    @comment = Comment.find(params[:comment_id])
+    @new_comment = @commentable.comments.create(comment_params)
+      if @commentable.save
+        respond_to do |format|
+          format.html { redirect_to :back, notice: "Your comment was successfully added." }
+          format.js
+        end
       else
         flash[:alert] = "Comment was not added, Please try again"
         render :new
-      end
-    else
-      @build = Build.find(params[:build_id])
-      @comment = @build.comments.create(comment_params)
-      if @comment.save
-        redirect_to user_build_path(@build.user_id, @build)
-      else
-        flash[:alert] = "Comment was not added, Please try again"
-        render :new
-      end
     end
+
   end
 
   def upvote
@@ -70,5 +63,11 @@ class CommentsController < ApplicationController
 private
   def comment_params
     params.require(:comment).permit(:content, :user_id, :commentable_type, :commentable_id)
+  end
+
+  def find_commentable
+    @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
+    @commentable = Product.find(params[:product_id]) if params[:product_id]
+    @commentable = Build.find(params[:build_id]) if params[:build_id]
   end
 end
