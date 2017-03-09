@@ -13,6 +13,12 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
+  <div class="input-field">
+    <%= f.select(:category_ids) do %>
+    <% categories_array = Category.all.map { |category| [category.name, category.id] } %>
+    <%= options_for_select(categories_array) %>
+    <% end %>
+  </div>
   <%= f.label :picture %>
   <div class="input field col s12">
     <%= f.file_field :picture %>

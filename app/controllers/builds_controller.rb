@@ -1,4 +1,5 @@
 class BuildsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def index
     @builds = Build.all
@@ -6,6 +7,7 @@ class BuildsController < ApplicationController
 
   def show
     @build = Build.find(params[:id])
+    @categories = Category.all
   end
 
   def new
@@ -26,6 +28,7 @@ class BuildsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @user = User.find(params[:user_id])
     @build = Build.find(params[:id])
     @products = Product.all
@@ -38,6 +41,8 @@ class BuildsController < ApplicationController
       @product = Product.find(params['build']['product_ids'].to_i)
       @build.products.push(@product)
     else
+      @user = User.find(params[:user_id])
+      @build = Build.find(params[:id])
       if @build.update(build_params)
         redirect_to user_build_path(@user, @build)
       else

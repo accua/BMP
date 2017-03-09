@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= category.name %></th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% category.products.each do |product| %>
+      <tr>
+        <td><%= image_tag product.picture.url(:thumb) %> <%= product.name %></td>
+        <td>$<%= product.price %></td>
+        <td><%= form_for [@user, @build] do |f| %>
+          <%= f.hidden_field :product_ids, value: product.id %>
+          <%= f.submit "Add", class: 'btn' %></td>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

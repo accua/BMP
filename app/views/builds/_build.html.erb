@@ -1,0 +1,19 @@
+<% if category.products.length > 0 %>
+<table>
+  <thead>
+    <tr>
+      <th><%= category.name %></th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% category.products.each do |product| %>
+      <tr>
+        <td><%= image_tag product.picture.url(:thumb) %> <%= product.name %></td>
+        <td>$<%= product.price %></td>
+        <td><a href="#" class="btn">Buy!</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
