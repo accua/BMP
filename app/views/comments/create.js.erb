@@ -1,2 +1,10 @@
+<% if @new_comment.commentable_type == "Comment" %>
 $("#new_comment_form_<%= @comment.id %>").hide()
 $("#new_comment_<%= @comment.id %>").append('<%= j render "comment", comment: @new_comment %>')
+<% elsif @new_comment.commentable_type == "Build" %>
+$('#comment_content').val('')
+$("#build_comments").append('<%= j render "comment", comment: @new_comment %>')
+<% else %>
+$('#comment_content').val('')
+$("#product_comments").append('<%= j render "comment", comment: @new_comment %>')
+<% end %>

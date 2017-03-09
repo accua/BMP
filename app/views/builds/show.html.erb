@@ -2,31 +2,39 @@
   <h1 class="center-align"><%= @build.name %></h1>
   <h3 class="center-align">Created by <%= link_to @build.user.username, user_path(@build.user) %></h3>
   <div class="center-align"><small>Submitted <%= time_ago_in_words(@build.created_at) %> ago</small></div><br>
-  <%= image_tag @build.picture.url(:medium), class: 'center-pic' %>
+  <%= image_tag @build.picture.url(:medium), class: 'materialboxed center-pic' %>
 
   <div class="col l4">
-    <h3>Gear List</h3>
-    <% @build.products.each do |product| %>
-      <p><strong><%= product.categories.first.name %></strong> - <%= link_to product.name, product_path(product) %></p>
+    <h3 class="center-align">Gear List</h3>
+    <% @categories.each do |category| %>
+      <%= render 'build', category: category %>
     <% end %>
   </div>
+  <br>
 
-<%= form_for [@build, Comment.new] do |f| %>
+<%= form_for [@build, Comment.new], remote: true do |f| %>
 <%= f.text_area :content, placeholder: "Add a comment" %><br/>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <%= f.submit "Add Comment", class: 'btn' %>
 <% end %>
 
-  <% @build.comments.each do |comment| %>
-    <div class="col l12">
+<% @build.comments.each do |comment| %>
+  <div class="row no-margin-bottom">
+    <div class="col s12">
       <%= render 'comments/comment', comment: comment %>
     </div>
-    <div id="new_comment_form_<%= comment.id %>"></div>
-    <div><ul><li id="new_comment_<%= comment.id %>"></li></ul></div>
-    <% comment.comments.each do |comment_comment| %>
-      <%= render 'comments/comment', comment: comment_comment  %>
-      <div id="new_comment_form_<%= comment_comment.id %>"></div>
-      <div><ul><li id="new_comment_<%= comment_comment.id %>"></li></ul></div>
-    <% end %>
-  <% end %>
+  </div>
+  <div class="row no-margin-bottom">
+    <div class="col s10 offset-s2">
+      <div id="new_comment_form_<%= comment.id %>"></div>
+      <div id="new_comment_<%= comment.id %>"></div>
+      <% comment.comments.each do |comment_comment| %>
+        <%= render 'comments/comment', comment: comment_comment  %>
+        <div id="new_comment_form_<%= comment_comment.id %>"></div>
+        <div><ul><li id="new_comment_<%= comment_comment.id %>"></li></ul></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div id="build_comments"></div>
 </div>

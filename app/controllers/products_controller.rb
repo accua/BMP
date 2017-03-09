@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def landing
   end
@@ -45,6 +46,6 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:name, :description, :price, :picture)
+    params.require(:product).permit(:name, :description, :price, :picture, :category_ids)
   end
 end
