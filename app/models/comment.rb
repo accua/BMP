@@ -3,4 +3,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   validates :content, presence: :true
   has_many :comments, as: :commentable
+  acts_as_votable
 end
