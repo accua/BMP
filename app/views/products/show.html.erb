@@ -1,43 +1,45 @@
 <div class="show-height">
   <h1 class="center-align"><%= @product.name %></h1>
+  <hr>
+  <br>
 
-  <%= image_tag @product.picture.url(:full), class: 'center-pic' %>
+  <%= image_tag @product.picture.url(:full), class: 'center-pic materialboxed' %>
   <br>
 
   <h3 class="center-align">Product Description</h3>
   <h5 class="center-align">
     <%= @product.description %>
   </h5>
-
-
-  <%= link_to 'Add Comment', new_product_comment_path(@product) %>
+  <br>
 
   <h3 class="center-align">Discussion</h3>
 
-  <div class="col l12 comment-margin">
-    <% @product.comments.each do |comment| %>
-      <div class="row">
-        <div class="card horizontal">
-          <div class="card-image">
-            <%= image_tag comment.user.avatar.url(:thumb) %>
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <span><strong><%= comment.user.username %></strong> - <%= comment.content %></span>
-            </div>
-            <% if current_user != nil %>
-              <% if current_user.try(:admin) || current_user.id == comment.user_id %>
-            <div class="card-action">
-              <%= link_to 'Edit Comment', edit_product_comment_path(@product, comment) %>
-              <%= link_to "Delete", product_comment_path(@product, comment),
-                                    :data => {:confirm => "Are you sure?",
-                                    :method => "delete"} %>
-              <% end %>
-            <% end %>
-            </div>
-          </div>
-        </div>
+  <%= form_for [@product, Comment.new], remote: true, method: 'post' do |f| %>
+  <%= f.text_area :content, placeholder: "Add a comment" %><br/>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Add Comment", class: 'btn' %>
+  <% end %>
+  <br>
+
+  <% @product.comments.each do |comment| %>
+    <div class="row no-margin-bottom">
+      <div class="col s12">
+        <%= render 'comments/comment', comment: comment %>
       </div>
-    <% end %>
+    </div>
+    <div class="row no-margin-bottom">
+      <div class="col s10 offset-s2">
+        <div id="new_comment_form_<%= comment.id %>"></div>
+        <div id="new_comment_<%= comment.id %>"></div>
+        <% comment.comments.each do |comment_comment| %>
+          <%= render 'comments/comment', comment: comment_comment  %>
+          <div id="new_comment_form_<%= comment_comment.id %>"></div>
+          <div><ul><li id="new_comment_<%= comment_comment.id %>"></li></ul></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div id="product_comments"></div>
+
   </div>
 </div>

@@ -1,19 +1,6 @@
-<h1> <%= @build.name %> by <%= link_to @build.user.username, user_path(@build.user) %> </h1>
+<h1 class="center-align"> <%= @build.name %> <br>
+  by <%= link_to @build.user.username, user_path(@build.user) %> </h1>
+<% @categories.each do |category| %>
+  <%= render 'product_tables', category: category %>
+<% end %>
 <%= render 'form' %>
-<table>
-  <tr>
-    <th>Gear</th>
-    <th>Price</th>
-    <th></th>
-  </tr>
-  <% @products.each do |product| %>
-  <tr>
-    <td><%= image_tag product.picture.url(:thumb) %> <%= product.name %></td>
-    <td>$<%= product.price %></td>
-    <td><%= form_for [@user, @build] do |f| %>
-      <%= f.hidden_field :product_ids, value: product.id %>
-      <%= f.submit "Add", class: 'btn' %></td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>

@@ -61,8 +61,10 @@ footer {
   }
   .content {
     z-index: 1;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 48%;
+    left: 50%;
+    width: 60vw;
+    transform: translate(-50%, -50%);
     position: absolute;
   }
 }
@@ -96,4 +98,12 @@ a {
 .card-content {
   max-height: 150px;
   overflow: scroll;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px !important;
+}
+
+td, th {
+  width: 100% !important;
 }

@@ -1,4 +1,5 @@
 class BuildsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def index
     @builds = Build.all
@@ -6,6 +7,8 @@ class BuildsController < ApplicationController
 
   def show
     @build = Build.find(params[:id])
+    @total = @build.cost
+    @categories = Category.all
   end
 
   def new
@@ -26,9 +29,22 @@ class BuildsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @user = User.find(params[:user_id])
     @build = Build.find(params[:id])
     @products = Product.all
+  end
+
+  def upvote
+    @comment = Comment.find(params[:id])
+    @comment.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    @comment.downvote_by current_user
+    redirect_to :back
   end
 
   def update

@@ -2,3 +2,9 @@
   <h1>Edit <%= @product.name %></h1>
   <%= render 'form' %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

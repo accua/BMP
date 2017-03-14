@@ -31,6 +31,10 @@ gem 'devise'
 gem 'paperclip'
 gem 'materialize-sass'
 gem 'rest-client'
+gem 'seed_dump'
+gem 'rails_admin', '~> 1.1.1'
+gem 'acts_as_votable'
+gem 'aws-sdk', '~> 2.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
