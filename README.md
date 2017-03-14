@@ -1,13 +1,17 @@
 # BuildMyBackpack
 
-_This application was created to showcase authorization, authentication, and file hosting learned during rails week 2_
+_Build My Backpack is a community built around helping one another get outside with the best loadout possible. From discussion about this season's best gear, to this season's best hikes, Build My Backpack hosts thousands of users as the world's best place to congregate online, as all who love the outdoors._
 
 _**Andrew Accuardi**_
 
 ## Description
 
 * _As a user, I'd like to click on a product and see it's details._
+* _As a user, I'd like to click on a build and see it's details including a categorized list of gear, a total price, and links to purchase that gear at the lowest price available online._
+* _As a user, I'd like to submit, and edit a build of my favorite gear and have the opportunity to share my anecdotes with other users, creating discourse about whether or not the product is the best suited for the build._
 * _As a user, I'd like to submit a comment on a product._
+* _As a user, I'd like to submit a comment on a build._
+* _As a user, I'd like to submit a comment on a comment._
 * _As a user, I'd like to edit, and delete my own comments_
 * _As an admin, I'd like to create, update, delete new products._
 * _As an admin, I'd like to create, update, delete all comments._
@@ -16,8 +20,7 @@ _**Andrew Accuardi**_
 ## Installation
 
 * `git clone https://github.com/accua/bmp`
-* `rails db:create`
-* `rails db:migrate`
+* `rails db:setup`
 * `bundle`
 * `rails s` to serve
 
@@ -26,11 +29,11 @@ _**Andrew Accuardi**_
 * navigate to `localhost:3000` in your web browser to see the project!
 
 ## Known Bugs
-* The navbar has a media query that gets rid of all navigation at tablet and smaller size windows.
+* The links on the comments that render via ajax do not work unless page reload.
 
 ## Technologies Used
 
-_This webpage was made using HTML5, Ruby on Rails, MaterializeCSS, CSS3_
+_This webpage was made using HTML5, Ruby on Rails, MaterializeCSS, CSS3, Javascript_
 
 ### License
 

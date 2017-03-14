@@ -16,9 +16,8 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_user.try(:admin) %>
-            <span class="black-text"><li>You are an admin</li></span>
+            <li><%= link_to 'Admin', rails_admin_path %></li>
           <% end %>
-          <li><a href="/">Home</a></li>
           <li><%= link_to 'Browse Builds', builds_path %></li>
           <li><%= link_to 'Browse Products', products_path %></li>
           <% if current_user %>
@@ -32,7 +31,7 @@
     </nav>
     <ul class="side-nav" id="mobile-demo">
       <% if current_user.try(:admin) %>
-        <span class="black-text"><li>You are an admin</li></span>
+        <li><%= link_to 'Admin', rails_admin_path %></li>
       <% end %>
       <li><a href="/">Home</a></li>
       <li><%= link_to 'Browse Builds', builds_path %></li>
