@@ -1,5 +1,5 @@
 User.create!([
-  {email: "andrew@test.com", password: "123123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2017-03-06 22:13:49", last_sign_in_at: "2017-02-19 05:44:46", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true, username: "accua", fullname: "Andrew Accuardi", avatar_file_name: "IMG_20160911_181711.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 426708, avatar_updated_at: "2017-02-17 23:47:20"}
+  {email: "andrew@andrew.com", password: "123123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 8, current_sign_in_at: "2017-03-06 22:13:49", last_sign_in_at: "2017-02-19 05:44:46", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true, username: "accua", fullname: "Andrew Accuardi", avatar_file_name: "IMG_20160911_181711.jpg", avatar_content_type: "image/jpeg", avatar_file_size: 426708, avatar_updated_at: "2017-02-17 23:47:20"}
 ])
 Build.create!([
   {name: "PCT Thru-Hiker", price: nil, user_id: 2, picture_file_name: "packloudout.jpeg", picture_content_type: "image/jpeg", picture_file_size: 9901, picture_updated_at: "2017-03-09 07:33:32", description: "IPSUM"},
