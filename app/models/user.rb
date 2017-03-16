@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :comments
-  has_many :products, through: :comments
+  has_many :products, through: :comments, source: :commentable, source_type: 'Product'
   has_many :builds
 end
