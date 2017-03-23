@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :builds, only: [:index] do
+    member do
+      put "upvote", to: "builds#upvote"
+      put "downvote", to: "builds#downvote"
+    end
     resources :comments, except: [:index]
   end
 
@@ -20,6 +24,10 @@ Rails.application.routes.draw do
   end
 
   resources :comments do
+    member do
+      put "upvote", to: "comments#upvote"
+      put "downvote", to: "comments#downvote"
+    end
     resources :comments
   end
 end

@@ -8,11 +8,16 @@
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title"></span>
-          <p></p>
+          <span class="vote_count"></span><h4 class="center-align vote_size"><%= @build.get_upvotes.size %></h4>
         </div>
         <div class="card-action">
-          <%= button_to "Upvote", class: 'btn', :method => "Upvote" %><br>
-          <%= button_to "Downvote", :method => "Downvote", class: 'btn' %>
+          <%= link_to upvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
+            Upvote
+          <% end %>
+          <br><br>
+          <%= link_to downvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
+            Downvote
+          <% end %>
         </div>
       </div>
     </div>

@@ -36,15 +36,21 @@ class BuildsController < ApplicationController
   end
 
   def upvote
-    @comment = Comment.find(params[:id])
-    @comment.upvote_by current_user
-    redirect_to :back
+    @build = Build.find(params[:id])
+    @build.upvote_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
+    end
   end
 
   def downvote
-    @comment = Comment.find(params[:id])
-    @comment.downvote_by current_user
-    redirect_to :back
+    @build = Build.find(params[:id])
+    @build.downvote_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
+    end
   end
 
   def update

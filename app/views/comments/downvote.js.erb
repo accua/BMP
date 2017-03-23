@@ -1,0 +1,4 @@
+$('.upvote_<%= @comment.id %>').remove()
+$('.downvote_<%= @comment.id %>').remove()
+$('.upcount_<%= @comment.id %>').html('<small><%= link_to upvote_comment_path(@comment), remote: true, method: :put do %> Upvote <% end %> <%= @comment.get_upvotes.size %> |</small>')
+$('.downcount_<%= @comment.id %>').html('<small><%= link_to downvote_comment_path(@comment), remote: true, method: :put do %> Downvote <% end %> <%= @comment.get_downvotes.size %></small>')

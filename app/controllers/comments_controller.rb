@@ -37,15 +37,23 @@ class CommentsController < ApplicationController
   end
 
   def upvote
+    @user = current_user
     @comment = Comment.find(params[:id])
     @comment.upvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
+    end
   end
 
   def downvote
+    @user = current_user
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render layout: false }
+    end
   end
 
   def edit

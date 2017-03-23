@@ -6,7 +6,8 @@
     <div class="card-stacked">
       <div class="card-content">
         <span><strong><%= link_to comment.user.username, user_path(comment.user) %></strong> - <%= comment.content %></span><br>
-        <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+        <span class="upcount_<%= comment.id %>"><small class="upvote_<%= comment.id %>"><%= link_to upvote_comment_path(comment), remote: true, method: :put do %> Upvote <% end %> <%= comment.get_upvotes.size %> |</small></span>
+        <span class="downcount_<%= comment.id %>"><small class="downvote_<%= comment.id %>"><%= link_to downvote_comment_path(comment), remote: true, method: :put do %> Downvote <% end %> <%= comment.get_downvotes.size %></small></span> <small>| Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
       </div>
       <% if current_user != nil %>
         <% if current_user.try(:admin) || current_user.id == comment.user_id %>
