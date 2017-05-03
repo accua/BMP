@@ -61,7 +61,11 @@
           <div> <%= debug(params) if Rails.env.development? %></div>
         </div>
       <% end %>
-    <footer class="page-footer">
+      <% if current_page?('/') %>
+        <footer class="page-footer-landing">
+      <% else %>
+        <footer class="page-footer">
+      <% end %>
       <div class="row footer-margin-bottom">
         <div class="col l4 s12">
           <h5 class="white-text">Subscribe to our newsletter</h5>
