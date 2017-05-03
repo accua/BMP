@@ -142,6 +142,7 @@ GEM
     multi_json (1.12.1)
     nested_form (0.3.2)
     netrc (0.11.0)
+    newrelic_rpm (4.0.0.332)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -308,6 +309,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   materialize-sass
+  newrelic_rpm
   paperclip
   pg (~> 0.18)
   pry

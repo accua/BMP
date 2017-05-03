@@ -13,11 +13,12 @@
   <br>
 
   <h3 class="center-align">Discussion</h3>
-
-  <%= form_for [@product, Comment.new], remote: true, method: 'post' do |f| %>
-  <%= f.text_area :content, placeholder: "Add a comment" %><br/>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Add Comment", class: 'btn' %>
+  <% if current_user %>
+    <%= form_for [@product, Comment.new], remote: true, method: 'post' do |f| %>
+    <%= f.text_area :content, placeholder: "Add a comment" %><br/>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Add Comment", class: 'btn' %>
+    <% end %>
   <% end %>
   <br>
 

@@ -19,20 +19,22 @@
         <div class="card-content scroll">
           <p class="card-text-height"><%= build.description %></p>
         </div>
-        <% if current_user.try(:admin) %>
-          <div class="card-action">
-              <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
-              <%= link_to "Delete", user_build_path(build.user_id, build),
-                                    :data => {:confirm => "Are you sure?",
-                                    :method => "delete"} %>
-          </div>
-        <% elsif current_user.id == build.user_id %>
-        <div class="card-action">
-            <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
-            <%= link_to "Delete", user_build_path(build.user_id, build),
-                                  :data => {:confirm => "Are you sure?",
-                                  :method => "delete"} %>
-        </div>
+        <% if current_user %>
+          <% if current_user.try(:admin) %>
+            <div class="card-action">
+                <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
+                <%= link_to "Delete", user_build_path(build.user_id, build),
+                                      :data => {:confirm => "Are you sure?",
+                                      :method => "delete"} %>
+            </div>
+          <% elsif current_user.id == build.user_id %>
+            <div class="card-action">
+                <%= link_to 'Edit Build', edit_user_build_path(build.user_id, build.id) %>
+                <%= link_to "Delete", user_build_path(build.user_id, build),
+                                      :data => {:confirm => "Are you sure?",
+                                      :method => "delete"} %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

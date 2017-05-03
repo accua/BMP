@@ -3,6 +3,7 @@
   <head>
     <title>BuildMyBackpack</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Rubik" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,16 +11,20 @@
   </head>
 
   <body>
-    <nav>
+    <% if current_page?('/') %>
+      <nav class="navbarhome">
+    <% else %>
+      <nav>
+    <% end %>
       <div class="nav-wrapper">
         <a href="/" class="brand-logo">BuildMyBackpack</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_user.try(:admin) %>
-            <li><%= link_to 'Admin', rails_admin_path %></li>
+            <li class="header-tag"><%= link_to 'Admin', rails_admin_path %></li>
           <% end %>
-          <li><%= link_to 'Browse Builds', builds_path %></li>
-          <li><%= link_to 'Browse Products', products_path %></li>
+          <li class="header-tag"><%= link_to 'Browse Builds', builds_path %></li>
+          <li class="header-tag"><%= link_to 'Forum', posts_path %></li>
           <% if current_user %>
             <li><%= link_to current_user.username, user_path(current_user.id) %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -33,9 +38,8 @@
       <% if current_user.try(:admin) %>
         <li><%= link_to 'Admin', rails_admin_path %></li>
       <% end %>
-      <li><a href="/">Home</a></li>
       <li><%= link_to 'Browse Builds', builds_path %></li>
-      <li><%= link_to 'Browse Products', products_path %></li>
+      <li><%= link_to 'Forum', posts_path %></li>
       <% if current_user %>
         <li><%= link_to current_user.username, user_path(current_user.id) %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -58,7 +62,7 @@
         </div>
       <% end %>
     <footer class="page-footer">
-      <div class="row">
+      <div class="row footer-margin-bottom">
         <div class="col l4 s12">
           <h5 class="white-text">Subscribe to our newsletter</h5>
           <%= render 'mailchimp/form' %>

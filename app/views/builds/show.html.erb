@@ -10,15 +10,17 @@
           <span class="card-title"></span>
           <span class="vote_count"></span><h4 class="center-align vote_size"><%= @build.get_upvotes.size %></h4>
         </div>
-        <div class="card-action">
-          <%= link_to upvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
-            Upvote
-          <% end %>
-          <br><br>
-          <%= link_to downvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
-            Downvote
-          <% end %>
-        </div>
+        <% if current_user %>
+          <div class="card-action">
+            <%= link_to upvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
+              Upvote
+            <% end %>
+            <br><br>
+            <%= link_to downvote_build_path(@build), class: 'btn', remote: true, method: :put do %>
+              Downvote
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col s9 push-s1">
@@ -31,11 +33,12 @@
   </div>
   <br>
 
-
-<%= form_for [@build, Comment.new], remote: true do |f| %>
-<%= f.text_area :content, placeholder: "Add a comment" %><br/>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.submit "Add Comment", class: 'btn' %>
+<% if current_user %>
+  <%= form_for [@build, Comment.new], remote: true do |f| %>
+  <%= f.text_area :content, placeholder: "Add a comment" %><br/>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Add Comment", class: 'btn' %>
+  <% end %>
 <% end %>
 
 <% @build.comments.each do |comment| %>

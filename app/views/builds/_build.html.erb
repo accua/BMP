@@ -9,7 +9,7 @@
   <tbody>
     <% category.products.each do |product| %>
       <tr>
-        <td><%= image_tag product.picture.url(:thumb) %> <%= product.name %></td>
+        <td><%= image_tag product.picture.url(:thumb) %> <%= link_to product.name, product_path(product) %></td>
         <td>$<%= product.price %></td>
         <td><a href="#" class="btn">Buy!</a></td>
       </tr>
