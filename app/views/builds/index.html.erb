@@ -2,8 +2,9 @@
 
   <h1 class="center-align">Featured</h1>
 
-  <%= link_to 'Create New Build', new_user_build_path(current_user.id), class: 'btn' %>
-
+  <% if current_user %>
+    <%= link_to 'Create New Build', new_user_build_path(current_user.id), class: 'btn' %>
+  <% end %>
   <hr>
 
   <div class="row">
