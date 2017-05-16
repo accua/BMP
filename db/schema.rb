@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401230249) do
+ActiveRecord::Schema.define(version: 20170503213307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,28 @@ ActiveRecord::Schema.define(version: 20170401230249) do
   create_table "builds", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.text     "description"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.index ["cached_votes_down"], name: "index_builds_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_builds_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_builds_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_builds_on_cached_votes_up", using: :btree
+    t.index ["cached_weighted_average"], name: "index_builds_on_cached_weighted_average", using: :btree
+    t.index ["cached_weighted_score"], name: "index_builds_on_cached_weighted_score", using: :btree
+    t.index ["cached_weighted_total"], name: "index_builds_on_cached_weighted_total", using: :btree
   end
 
   create_table "builds_products", id: false, force: :cascade do |t|
@@ -45,12 +59,26 @@ ActiveRecord::Schema.define(version: 20170401230249) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "content"
     t.integer  "user_id"
     t.string   "commentable_type"
     t.integer  "commentable_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.index ["cached_votes_down"], name: "index_comments_on_cached_votes_down", using: :btree
+    t.index ["cached_votes_score"], name: "index_comments_on_cached_votes_score", using: :btree
+    t.index ["cached_votes_total"], name: "index_comments_on_cached_votes_total", using: :btree
+    t.index ["cached_votes_up"], name: "index_comments_on_cached_votes_up", using: :btree
+    t.index ["cached_weighted_average"], name: "index_comments_on_cached_weighted_average", using: :btree
+    t.index ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score", using: :btree
+    t.index ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   end
 

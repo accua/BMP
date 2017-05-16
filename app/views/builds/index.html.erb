@@ -1,22 +1,21 @@
 <div class="full-height">
 
-  <h1 class="center-align">Browse Builds</h1>
+  <h1 class="center-align">Featured</h1>
 
-  <% if current_user.try(:admin) %>
-    <%= link_to 'Create New Build', new_user_build_path(current_user.id), class: 'btn' %>
-  <% end %>
+  <%= link_to 'Create New Build', new_user_build_path(current_user.id), class: 'btn' %>
 
   <hr>
 
   <div class="row">
-  <% @builds.each do |build| %>
-    <div class="col s12 m6 l4">
+  <% @builds.order(cached_votes_up: :desc).each do |build| %>
+    <div class="col s12 m6 l12">
       <div class="card hoverable">
         <div class="card-image">
           <%= image_tag build.picture.url(:full) %>
           <span class="card-title"><%= link_to build.name, user_build_path(build.user_id, build.id) %></span>
         </div>
         <div class="card-content scroll">
+          <h4 class="card-text-height">Description:</h4>
           <p class="card-text-height"><%= build.description %></p>
         </div>
         <% if current_user %>
