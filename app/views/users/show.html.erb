@@ -1,6 +1,8 @@
 <div class="profile-page">
   <h1 class="center-align"><%= @user.username %></h1>
-  <%= image_tag @user.avatar.url(:medium), class: 'center-pic' %>
+  <div class="center-pic">
+    <%= image_tag @user.avatar.url(:medium) %>
+  </div>
   <br>
   <h3 class="center-align">About <%= @user.username %></h3>
 </div>
