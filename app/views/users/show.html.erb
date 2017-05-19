@@ -5,7 +5,7 @@
       <%= image_tag @user.avatar.url(:medium), class: "circle" %>
     </div>
     <br>
-    <% if current_user && current_user.id == @user.id %>
+    <!-- <% if current_user && current_user.id == @user.id %> -->
     <ul class="col l8 navbaruser">
       <li class="navbaruser"><%= link_to "Submitted Builds" %></li>
       <li class="navbaruser"><%= link_to "Current Build" %></li>
@@ -15,7 +15,6 @@
     </ul>
     <h3 class="col l8">About <%= @user.username %></h3>
   </div>
-  <% else %>
-    <p>hi</p>
-  <% end %>
+  <!-- <% else %>
+  <% end %> -->
 </div>
