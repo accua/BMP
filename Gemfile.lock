@@ -99,6 +99,8 @@ GEM
     ffi (1.9.17)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
+    friendly_id (5.2.1)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -304,6 +306,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  friendly_id
   jbuilder (~> 2.5)
   jquery-rails
   launchy
@@ -332,4 +335,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.14.3
+   1.14.6

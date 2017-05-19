@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516231411) do
+ActiveRecord::Schema.define(version: 20170519005858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.string   "slug"
     t.index ["cached_votes_down"], name: "index_builds_on_cached_votes_down", using: :btree
     t.index ["cached_votes_score"], name: "index_builds_on_cached_votes_score", using: :btree
     t.index ["cached_votes_total"], name: "index_builds_on_cached_votes_total", using: :btree
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.index ["cached_weighted_average"], name: "index_builds_on_cached_weighted_average", using: :btree
     t.index ["cached_weighted_score"], name: "index_builds_on_cached_weighted_score", using: :btree
     t.index ["cached_weighted_total"], name: "index_builds_on_cached_weighted_total", using: :btree
+    t.index ["slug"], name: "index_builds_on_slug", unique: true, using: :btree
   end
 
   create_table "builds_products", id: false, force: :cascade do |t|
@@ -91,6 +93,18 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id", using: :btree
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -99,7 +113,9 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.datetime "updated_at",       null: false
     t.string   "commentable_type"
     t.integer  "commentable_id"
+    t.string   "slug"
     t.index ["commentable_type", "commentable_id"], name: "index_posts_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -113,6 +129,8 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.float    "weight"
+    t.string   "slug"
+    t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -133,8 +151,10 @@ ActiveRecord::Schema.define(version: 20170516231411) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "slug"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|

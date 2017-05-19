@@ -138,3 +138,32 @@ td, th {
   margin: auto;
   width: 30%;
 }
+
+.navbaruser ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbaruser li {
+  float: left;
+}
+
+.navbaruser li a {
+  background-color: #333;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbaruser li a:hover {
+  background-color: #111;
+}
+
+.profile-username {
+  margin-left: 7%
+}

@@ -1,8 +1,21 @@
 <div class="profile-page">
-  <h1 class="center-align"><%= @user.username %></h1>
-  <div class="center-pic">
-    <%= image_tag @user.avatar.url(:medium) %>
+  <h1 class="profile-username col l4 offset-l2"><%= @user.username %></h1>
+  <div class="row">
+    <div class="col l4">
+      <%= image_tag @user.avatar.url(:medium), class: "circle" %>
+    </div>
+    <br>
+    <% if current_user && current_user.id == @user.id %>
+    <ul class="col l8 navbaruser">
+      <li class="navbaruser"><%= link_to "Submitted Builds" %></li>
+      <li class="navbaruser"><%= link_to "Current Build" %></li>
+      <li class="navbaruser"><%= link_to "Favorite Builds" %></li>
+      <li class="navbaruser"><%= link_to "Forum Topics" %></li>
+      <li class="navbaruser"><%= link_to "Comments" %></li>
+    </ul>
+    <h3 class="col l8">About <%= @user.username %></h3>
   </div>
-  <br>
-  <h3 class="center-align">About <%= @user.username %></h3>
+  <% else %>
+    <p>hi</p>
+  <% end %>
 </div>

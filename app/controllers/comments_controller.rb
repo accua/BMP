@@ -57,15 +57,27 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:product_id])
     @comment = Comment.find(params[:id])
+    if @comment[:commentable_type == "Product"]
+      @product = Product.find(params[:product_id])
+    elsif @comment[:commentable_type == "Build"]
+      @build = Build.find(params[:build_id])
+    elsif @comment[:commentable_type == "Comment"]
+      @comment = Comment.find(params[:comment_id])
+    end
   end
 
   def update
-    @product = Product.find(params[:product_id])
     @comment = Comment.find(params[:id])
+    if @comment[:commentable_type == "Product"]
+      @product = Product.find(params[:product_id])
+    elsif @comment[:commentable_type == "Build"]
+      @build = Build.find(params[:build_id])
+    elsif @comment[:commentable_type == "Comment"]
+      @comment = Comment.find(params[:comment_id])
+    end
     if @comment.update(comment_params)
-      redirect_to product_path(@product)
+      redirect_to builds_path(@build)
     else
       render :edit
     end
