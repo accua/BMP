@@ -36,7 +36,7 @@ class BuildsController < ApplicationController
   end
 
   def upvote
-    @build = Build.friendly.find(params[:id])
+    @build = Build.find(params[:id])
     @build.upvote_by current_user
     respond_to do |format|
       format.html { redirect_to :back }

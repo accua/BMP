@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Meta Tags -->
+    <meta name="robots" content="index" />
+    <meta name="description" content="Build My Backpack is a community built around helping one another get outside with the best loadout possible. From discussion about this season's best gear, to this season's best hikes, Build My Backpack hosts users as the world's best place to congregate online, as all who love the outdoors." />
+    <%= csrf_meta_tags %>
     <title>BuildMyBackpack</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abel|Rubik" rel="stylesheet">
-    <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,8 +19,9 @@
       <nav>
     <% end %>
       <div class="nav-wrapper">
+        <%= image_tag 'Logo.png', class: "andrew" %>
         <a href="/" class="brand-logo">BuildMyBackpack</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_user.try(:admin) %>
             <li class="header-tag"><%= link_to 'Admin', rails_admin_path %></li>
@@ -26,7 +29,7 @@
           <li class="header-tag"><%= link_to 'Browse Builds', builds_path %></li>
           <!-- <li class="header-tag"><%= link_to 'Forum', posts_path %></li> -->
           <% if current_user %>
-            <li><%= link_to current_user.username, user_path(current_user.id) %></li>
+            <li><%= link_to current_user.username, user_path(current_user, current_user.id) %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'Login', new_user_session_path %></li>
@@ -34,19 +37,6 @@
         </ul>
       </div>
     </nav>
-    <ul class="side-nav" id="mobile-demo">
-      <% if current_user.try(:admin) %>
-        <li class="header-tag"><%= link_to 'Admin', rails_admin_path %></li>
-      <% end %>
-      <li class="header-tag"><%= link_to 'Browse Builds', builds_path %></li>
-      <li class="header-tag"><%= link_to 'Forum', posts_path %></li>
-      <% if current_user %>
-        <li><%= link_to current_user.username, user_path(current_user.id) %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Login', new_user_session_path %></li>
-      <% end %>
-    </ul>
       <% if flash[:notice]%>
         <%= flash[:notice] %>
       <% end %>
@@ -90,9 +80,4 @@
       </div>
     </footer>
   </body>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $(".button-collapse").sideNav();
-  })
-  </script>
 </html>

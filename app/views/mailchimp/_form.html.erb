@@ -1,14 +1,14 @@
 <%= form_tag('mailchimp#create') do %>
-  <div class="input-field col s6 footer-margin-top">
+  <div class="input-field col s6 footer-margin-top mailchimp-form-text">
     <%= label_tag :first_name %>
     <%= text_field_tag :first_name %>
   </div>
-  <div class="input-field col s6 footer-margin-top">
+  <div class="input-field col s6 footer-margin-top mailchimp-form-text">
     <%= label_tag :last_name %>
     <%= text_field_tag :last_name %>
   </div>
   <div class="row footer-margin-bottom">
-    <div class="input-field col s12 footer-margin-top">
+    <div class="input-field col s12 footer-margin-top mailchimp-form-text">
       <%= label_tag :email %>
       <%= text_field_tag :email %>
     </div>
