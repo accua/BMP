@@ -44,7 +44,7 @@
   <% end %>
 <% end %>
 
-<% @build.comments.each do |comment| %>
+<% @build.comments.order(cached_votes_up: :desc).each do |comment| %>
   <div class="row no-margin-bottom">
     <div class="col s12">
       <%= render 'comments/comment', comment: comment %>
