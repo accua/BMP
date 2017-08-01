@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
     if params[:comment_id]
       @comment = Comment.find(params[:comment_id])
     elsif params[:build_id]
-      @build = Build.find(params[:build_id])
+      @build = Build.friendly.find(params[:build_id])
     else
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:product_id])
     end
     @new_comment = Comment.new
     respond_to do |format|
@@ -59,9 +59,9 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     if @comment[:commentable_type == "Product"]
-      @product = Product.find(params[:product_id])
+      @product = Product.friendlyfind(params[:product_id])
     elsif @comment[:commentable_type == "Build"]
-      @build = Build.find(params[:build_id])
+      @build = Build.friendlyfind(params[:build_id])
     elsif @comment[:commentable_type == "Comment"]
       @comment = Comment.find(params[:comment_id])
     end
@@ -70,9 +70,9 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment[:commentable_type == "Product"]
-      @product = Product.find(params[:product_id])
+      @product = Product.friendlyfind(params[:product_id])
     elsif @comment[:commentable_type == "Build"]
-      @build = Build.find(params[:build_id])
+      @build = Build.friendly.find(params[:build_id])
     elsif @comment[:commentable_type == "Comment"]
       @comment = Comment.find(params[:comment_id])
     end
@@ -96,7 +96,7 @@ private
 
   def find_commentable
     @commentable = Comment.find(params[:comment_id]) if params[:comment_id]
-    @commentable = Product.find(params[:product_id]) if params[:product_id]
-    @commentable = Build.find(params[:build_id]) if params[:build_id]
+    @commentable = Product.friendly.find(params[:product_id]) if params[:product_id]
+    @commentable = Build.friendly.find(params[:build_id]) if params[:build_id]
   end
 end
