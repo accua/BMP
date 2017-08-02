@@ -1,9 +1,11 @@
-<% if category.products.length > 0 %>
 <table>
   <thead>
+  <% build.categories.each do |category| %>
     <tr>
-      <th><%= category.name %></th>
-      <th>Price</th>
+      <% if category.products.length > 0 %>
+        <th><%= category.name %></th>
+        <th>Price</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +16,6 @@
         <td><a href="#" class="btn">Buy!</a></td>
       </tr>
     <% end %>
+  <% end %>
   </tbody>
 </table>
-<% end %>

@@ -1,6 +1,6 @@
 <div class="full-height">
   <h1 class="center-align"><%= @build.name %></h1>
-  <h3 class="center-align">Created by <%= link_to @build.user.username, user_path(@build.user) %></h3>
+  <h3 class="center-align">Created by <%= link_to @build.user.username, user_path(@build.user.username) %></h3>
   <div class="center-align"><small>Submitted <%= time_ago_in_words(@build.created_at) %> ago</small></div><br>
   <%= image_tag @build.picture.url(:medium), class: 'materialboxed center-pic' %>
   <div class="row">
@@ -28,9 +28,7 @@
       <h3 class="center-align">Description</h3>
       <%= @build.description %>
       <h3 class="center-align">Gear List</h3>
-      <% @categories.each do |category| %>
-        <%= render 'build', category: category %>
-      <% end %>
+      <%= render 'build', build: @build %>
     <h3>Total: $<%= @total %></h3>
     </div>
   </div>
@@ -43,8 +41,9 @@
   <%= f.submit "Add Comment", class: 'btn' %>
   <% end %>
 <% end %>
+<br>
 
-<% @build.comments.each do |comment| %>
+<% @build.comments.order(cached_votes_up: :desc).each do |comment| %>
   <div class="row no-margin-bottom">
     <div class="col s12">
       <%= render 'comments/comment', comment: comment %>
