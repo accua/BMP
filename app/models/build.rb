@@ -6,6 +6,7 @@ class Build < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_many :categories, through: :products
   has_and_belongs_to_many :products
   belongs_to :user
   has_many :comments, :as => :commentable

@@ -28,9 +28,7 @@
       <h3 class="center-align">Description</h3>
       <%= @build.description %>
       <h3 class="center-align">Gear List</h3>
-      <% @categories.each do |category| %>
-        <%= render 'build', category: category %>
-      <% end %>
+      <%= render 'build', build: @build %>
     <h3>Total: $<%= @total %></h3>
     </div>
   </div>
