@@ -47,6 +47,10 @@ gem 'friendly_id'
 gem 'aws-sdk', '~> 2.3'
 # Integrate New Relic tool for analytics
 gem 'newrelic_rpm'
+# Use webpack with Rails!
+gem 'webpacker', '~> 3.0'
+# Use React with Rails!
+gem 'react_on_rails', '~> 10.0.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
