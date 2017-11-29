@@ -27,16 +27,30 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Gem for easy authentication implementation
 gem 'devise'
+# Gem for easy file attachment management(resizing images with imagemagick)
 gem 'paperclip'
+# Gem for CSS framwork
 gem 'materialize-sass'
+# Simple HTTP and Rest client for rails
 gem 'rest-client'
+# Gem for creating a seed file using the current DB structure.
 gem 'seed_dump'
+# Use rails_admin to generate an admin console for Rails projects.
 gem 'rails_admin', '~> 1.1.1'
+# Easily integrate upvote/downvote capability.
 gem 'acts_as_votable'
-gem 'aws-sdk', '~> 2.3'
-gem 'newrelic_rpm'
+# Easily integrate slugs for more sensible url endpoints.
 gem 'friendly_id'
+# Integrate AWS to Rails.
+gem 'aws-sdk', '~> 2.3'
+# Integrate New Relic tool for analytics
+gem 'newrelic_rpm'
+# Use webpack with Rails!
+gem 'webpacker', '~> 3.0'
+# Use React with Rails!
+gem 'react_on_rails', '~> 10.0.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -72,3 +86,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+ruby "2.4.1"
+
+gem 'mini_racer', platforms: :ruby

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   resources :posts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'products#landing'

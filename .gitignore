@@ -18,3 +18,6 @@
 
 # Ignore ENV variables
 .env
+/public/packs
+/public/packs-test
+/node_modules
