@@ -126,6 +126,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (5.9.211.38.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -141,6 +142,8 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
+    mini_racer (0.1.14)
+      libv8 (~> 5.9)
     minitest (5.10.1)
     multi_json (1.12.1)
     nested_form (0.3.2)
@@ -327,6 +330,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   materialize-sass
+  mini_racer
   newrelic_rpm
   paperclip
   pg (~> 0.18)
