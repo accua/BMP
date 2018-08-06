@@ -1,9 +1,5 @@
 # BuildMyBackpack
 
-_Build My Backpack is a community built around helping one another get outside with the best loadout possible. From discussion about this season's best gear, to this season's best hikes, Build My Backpack hosts thousands of users as the world's best place to congregate online, as all who love the outdoors._
-
-_**Andrew Accuardi**_
-
 ## Description
 
 * _As a user, I'd like to click on a product and see it's details._
